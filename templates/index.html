@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello, Blass!</h1>
+    <p>Welcome to your first Flask application!</p>
+    <p>Current time: {{ current_time }}</p>
+    {% if user == 'admin' %}
+        <p>Welcome, Admin!</p>
+        <button>Delete</button>
+    {% elif user == 'user' %}
+        <p>Welcome, User!</p>
+    {% else %}
+        <p>Welcome, Guest!</p>
+    {% endif %}
+    <ul>
+        {% for number in numbers %}
+            <li>Number: {{ number }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
