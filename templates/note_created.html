@@ -9,6 +9,8 @@
     <h1>Note Created</h1>
     <p>Your note has been successfully created!</p>
     <p>Title: {{ title }}</p>
+    <p>Content: {{ content }}</p>
     <a href="{{ url_for('create_note') }}">Create another note</a>
+    <a href="{{ url_for('index') }}">Back to home</a>
 </body>
 </html>
