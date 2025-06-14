@@ -13,7 +13,7 @@
     {% endif %}
     {% endwith %}
     <p>Welcome to your first Flask application!</p>
-    <p>Current time: {{ current_time }}</p>
+    <p class="text-blue-600 hover:text-blue-800 mx-2 font-medium" >Current time: {{ current_time }}</p>
     {% if user == 'admin' %}
         <p>Welcome, Admin!</p>
         <button>Delete</button>
