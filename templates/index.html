@@ -2,7 +2,14 @@
 {% block title %}Home Page{% endblock %}
 
 {% block content %}
-    <h1>Hello, Blass!</h1>
+    <nav class="flex justify-evenly m-1 w-full bg-gray-200">
+        <a href="{{ url_for("notes.create_note")}}">Create new nnote</a>
+        <br>
+        <a href="{{ url_for("users.register")}}">Register</a>
+        <br>
+        <a href="{{ url_for("users.login")}}">Login</a>
+        <br>
+    </nav>
     {% with messages = get_flashed_messages(with_categories = True) %}
     {% if messages %}
     <ul>
@@ -12,36 +19,24 @@
     </ul>
     {% endif %}
     {% endwith %}
-    <p>Welcome to your first Flask application!</p>
-    <p class="text-blue-600 hover:text-blue-800 mx-2 font-medium" >Current time: {{ current_time }}</p>
-    {% if user == 'admin' %}
-        <p>Welcome, Admin!</p>
-        <button>Delete</button>
-    {% elif user == 'user' %}
-        <p>Welcome, User!</p>
-    {% else %}
-        <p>Welcome, Guest!</p>
-    {% endif %}
-    <ul>
-        {% for number in numbers %}
-            <li>Number: {{ number }}</li>
-        {% endfor %}
+    <p>First Flask application!</p>
+    <p class="text-blue-600 hover:text-blue-800 font-medium" >Current time: {{ current_time }}</p>
     </ul>
-
-    {% for note in notes %}
-        <div>
-            <h2> ID: {{ note.id }} - {{ note.title }}</h2>
+    <section class="flex flex-wrap justify-between">
+        {% for note in notes %}
+        <div class="flex flex-col m-4 w-1/4 bg-gray-200">
+            <h2 class="text-center"> ID: {{ note.id }} - {{ note.title }}</h2>
             <p>{{ note.content }}</p>
-            <a href="{{ url_for('notes.edit_note', note_id=note.id) }}">Edit</a>
-            <a href="{{ url_for('notes.delete_note', note_id=note.id) }}">Delete</a>
+            <div class="flex">
+                <div class="bg-red-500 h-6"><a class="pb-2 px-2" href="{{ url_for('notes.delete_note', note_id=note.id) }}">Delete</a></div>
+                <a href="{{ url_for('notes.edit_note', note_id=note.id) }}">Edit</a>
+            </div>
         </div>
-    {% endfor %}
-    <a href="{{ url_for("notes.create_note")}}">Create new nnote</a>
-    <br>
-    <a href="{{ url_for("users.register")}}">Register</a>
-    <br>
-    <a href="{{ url_for("users.login")}}">Login</a>
-    <br>
+        {% endfor %}
+    </section>
+    
+        
+    
 {% endblock content%}
 
     
